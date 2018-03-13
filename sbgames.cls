@@ -25,9 +25,9 @@
     \sbc@cameratrue%
     \sbc@preprintfalse%
     \sbc@reviewfalse%
-    \renewcommand{\sbc@columnmode}{twocolumn}%
+    \renewcommand{\sbc@columnmode}{onecolumn}%
     \sbc@doublespacedfalse%
-    \renewcommand{\sbc@pointsize}{9pt}}
+    \renewcommand{\sbc@pointsize}{12pt}}
 
 % 'review' option.
 
@@ -35,9 +35,9 @@
     \sbc@camerafalse%
     \sbc@preprintfalse%
     \sbc@reviewtrue%
-    \renewcommand{\sbc@columnmode}{twocolumn}%
+    \renewcommand{\sbc@columnmode}{onecolumn}%
     \sbc@doublespacedfalse%
-    \renewcommand{\sbc@pointsize}{9pt}}
+    \renewcommand{\sbc@pointsize}{12pt}}
 
 % 'widereview' option.
 
@@ -47,7 +47,7 @@
     \sbc@reviewtrue%
     \renewcommand{\sbc@columnmode}{onecolumn}%
     \sbc@doublespacedtrue%
-    \renewcommand{\sbc@pointsize}{12pt}}
+    \renewcommand{\sbc@pointsize}{14pt}}
 
 % 'preprint' option.
 
@@ -55,9 +55,9 @@
     \sbc@camerafalse%
     \sbc@preprinttrue%
     \sbc@reviewfalse%
-    \renewcommand{\sbc@columnmode}{twocolumn}%
+    \renewcommand{\sbc@columnmode}{onecolumn}%
     \sbc@doublespacedfalse%
-    \renewcommand{\sbc@pointsize}{9pt}}
+    \renewcommand{\sbc@pointsize}{14pt}}
 
 % Assume, for the moment, that we're preparing a 'cameraready' version.
 
