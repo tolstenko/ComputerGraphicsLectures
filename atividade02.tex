@@ -103,8 +103,35 @@ Esta é a generalização do algoritmo de distancia euclidiana, manhathan. Para 
 
 O código está disponibilizado como uma demo do projeto MoBaGEn \cite{Tolstenko2018}. A base do processamento é esta função:
 
+\begin{lstlisting}
+static float histogramData[256];
+static float maxValue=0;
 
+void EditorGUI::onGUI(ImGuiContext* context)
+{
+  ImGui::SetCurrentContext(context);
 
+  ImGui::Begin("Options", nullptr, ImVec2(128,128),0, ImGuiWindowFlags_ChildWindowAutoFitX | ImGuiWindowFlags_ChildWindowAutoFitY);
+  if (ImGui::Button("Histogram"))
+  {
+    memset(histogramData,0, sizeof(histogramData));
+    for(int i=0; i<originalImage->height()*originalImage->width();i++)
+    {
+      auto color = originalImage->getTextureData()->data[i*4]; // get the red channel of the grayscale rgba image
+      histogramData[color]+=1;
+    }
+    maxValue = 0;
+    for(int i=0; i<255; i++)
+      if(histogramData[i]>maxValue)
+        maxValue=histogramData[i];
+  }
+  ImGui::End();
+
+  ImGui::Begin("Histogram", nullptr, ImGuiWindowFlags_ChildWindowAutoFitX | ImGuiWindowFlags_ChildWindowAutoFitY );
+  ImGui::PlotHistogram("", histogramData, 256, 0, "Color", 0.f, maxValue, ImVec2(0,80));
+  ImGui::End();
+}
+\end{lstlisting}
 
 \textbf{4) Implemente um programa (método, procedimento, função) em qualquer
 linguagem de programação que receba uma imagem e a exiba com todos
