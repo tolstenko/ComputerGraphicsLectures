@@ -184,6 +184,7 @@ std::shared_ptr<Texture> equalizeHistogram(std::shared_ptr<Texture> originalImag
   }
   unsigned char *newEqualizedData = &equalizedData[0];
 
+  // create new texture
   auto newTextureData = std::make_shared<TextureData>(originalImage->width(),originalImage->height(), newEqualizedData ,GL_TEXTURE_2D,GL_LINEAR);
   return std::make_shared<Texture>(newTextureData);
 }
@@ -208,13 +209,12 @@ Equalização de imagem por histograma é uma forma de normalizar a densidade de
 
 \textbf{7) Preparação da próxima aula:}
 \begin{itemize}
-\item Conceitue gradiente de uma função unidimensional e gradiente de uma função bidimensional. Para que são usados? Dê um exemplo (máximo :
-uma página)
-\item Faça um resumo sobre introdução à geometria projetiva, incluindo
-conceitos básicos e modelo de câmera virtual (máximo: uma página)
-\item Faça uma comparação entre Geometria Projetiva e Geometria Euclidiana.
-Citar as referências usadas (máximo: meia página)
+\item Conceitue gradiente de uma função unidimensional e gradiente de uma função bidimensional. Para que são usados? Dê um exemplo (máximo: uma página)
+\item Faça um resumo sobre introdução à geometria projetiva, incluindo conceitos básicos e modelo de câmera virtual (máximo: uma página)
+\item Faça uma comparação entre Geometria Projetiva e Geometria Euclidiana. Citar as referências usadas (máximo: meia página)
 \end{itemize}
+
+
 
 \bibliographystyle{sbgames}
 \bibliography{template}
