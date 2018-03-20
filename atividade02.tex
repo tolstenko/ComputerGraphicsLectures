@@ -205,8 +205,9 @@ std::shared_ptr<Texture> equalizeHistogram(std::shared_ptr<Texture> originalImag
 
 Neste trabalho optei por fazer equalização por histograma.
 
-Equalização de imagem por histograma é uma forma de normalizar a densidade de tons de cores ao longo do histograma. O processo faz com que a imagem possua na aproximadamente a mesma quantidade de tons para qualquer subintervalo observado dentro do histograma. O resultado disso é uma imagem mais nítida e com percepção de detalhes melhorada. 
+Equalização de imagem por histograma é uma forma de normalizar a densidade de tons de cores ao longo do histograma. O processo faz com que a imagem possua na aproximadamente a mesma quantidade de tons para qualquer subintervalo observado dentro do histograma. O resultado disso é uma imagem mais nítida e com percepção de detalhes melhorada.
 
+\pagebreak
 \textbf{7) Preparação da próxima aula:}
 \begin{itemize}
 \item Conceitue gradiente de uma função unidimensional e gradiente de uma função bidimensional. Para que são usados? Dê um exemplo (máximo: uma página)
@@ -214,7 +215,125 @@ Equalização de imagem por histograma é uma forma de normalizar a densidade de
 \item Faça uma comparação entre Geometria Projetiva e Geometria Euclidiana. Citar as referências usadas (máximo: meia página)
 \end{itemize}
 
+\textbf{Gradiente de uma Função}
 
+Gradiente é um conceito de matemática vetorial. Indica o sentido de e direção de crescimento máximo da função em um dado ponto. Seu módulo aponta o quanto que a o valor cresce em relação à distância movida quando desloca-se na direção e sentido do vetor gradiente.
+
+\begin{equation}
+\mbox{grad} \, f = \left\langle \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \cdots, \frac{\partial f}{\partial x_n} \right\rangle
+\label{eq:gradi}
+\end{equation}
+
+\begin{equation}
+\nabla f = \frac{\partial f}{\partial x} \mathbf{i} + \frac{\partial f}{\partial y} \mathbf{j} + \frac{\partial f}{\partial z} \mathbf{k}
+\label{eq:grad}
+\end{equation}
+
+
+A equação \ref{eq:grad} representa o gradiente de uma função de $3$ dimensões. Enquanto a equação \ref{eq:gradi} é generalizada para $n$ dimensões. Se a função tiver apenas uma dimensão, ela pode ser representada apenas por:
+
+\begin{equation}
+\nabla f = \frac{df}{dx}
+\label{eq:grado}
+\end{equation}
+
+Que é apenas a derivada da função em relação a variável da dimensão, no caso da equação \ref{eq:grado} a referencia é a $x$. Neste caso específico de apenas uma dimensão o gradiente da função pode ser interpretado como a inclinação da função da reta tangente ao ponto estudado. Em outras palavras, significa o valor do quanto que a função está crescendo naquele ponto.
+
+\begin{equation}
+\nabla f = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle
+\label{eq:gradtwo}
+\end{equation}
+
+O significado do gradiente em relação a uma função bidimensional como o representado pela equação \ref{eq:gradtwo} é o quanto que o dado ponto está crescendo em em qual sentido.
+
+Exemplo:
+
+\begin{equation}
+f_{\!\left( x, y, z \right)} = 4x + 10y^2 - \sin z
+\label{eq:exone}
+\end{equation}
+
+\begin{equation}
+\mbox{grad} \, f = \frac{\partial (4x + 10y^2 - \sin z)}{\partial x} \hat i + \frac{\partial (4x + 10y^2 - \sin z)}{\partial y} \hat j + \frac{\partial (4x + 10y^2 - \sin z)}{\partial z} \hat k
+\end{equation}
+
+\begin{equation}
+\vec \nabla f = \left\langle 4; 20y ; - \cos z \right\rangle
+\label{eq:extwo}
+\end{equation}
+
+No caso do exemplo acima, a função \ref{eq:exone} tem o gradiente dado como na função \ref{eq:extwo}. Para encontrar o valor exato no dado ponto (x,y,z), deve-se substituir os valores na equação \ref{eq:extwo}. Para o ponto (0,0,0), tem-se que o vetor gradiente no ponto origem é (4,0,1).
+
+\pagebreak
+
+\textbf{Geometria projetiva} \cite{auffinger2003introduccao}
+
+Geometria projetiva é uma extensão ou simplificação da geometria Euclidiana(depende do ponto de vista), no qual não existe o conceito de distância ou medida de ângulo. 
+
+De maneira geral, a geometria projetiva estuda o campo das projeções geométricas em espaços euclidianos ou não.
+
+As equações para a projeção de perspectiva para o plano da imagem não são lineares quando expressas em coordenadas não homogêneas, mas são lineares em coordenadas homogêneas. Isso é característico de todas as transformações na geometria projetiva, não apenas na projeção em perspectiva. Ele fornece uma das principais motivações para o uso de coordenadas homogêneas, uma vez que os sistemas lineares são simbolicamente e numericamente mais fáceis de manusear do que os não-lineares.
+
+A idéia de um plano projetivo pode ser aplicada no espaço de $n$-dimensional para definir $n$-espaço projetivo. De particular interesse é o espaço projetivo de 3 espaços. As transformações dentro e entre os espaços projetivos são chamadas de projetividade e são a preocupação fundamental da geometria projetiva. Certas propriedades e medidas permanecem invariantes sob a ação de uma projetividade - as propriedades invariantes incluem colinearidade, simultaneidade, tangência e incidência; medidas invariantes, que são referidas como invariantes projetivos.
+
+Conceitos de geometria projetiva devem ser aplicados para a criação de câmeras virtuais. Os modelos mais comuns são Camera Ortográfica e Camera Perspectiva.
+
+Camera ortográfica usa projeção ortografica. É uma forma de projeção paralela, na qual todas as linhas de projeção são ortogonais ao plano de projeção. Todos os planos da cena que aparecem em transformação afim na superfície de visualização.
+
+Camera perspectiva usa projeção perspectiva. É uma forma de projeção onde as linhas partem do mesmo ponto. Os objetos mais proximos aparecem maiores na projeção enquanto os mais distantes, menores. Usualmente usa-se o conceito de frustrum para cortar a partir de onde e até onde pode ser visto ou renderizado.
+
+\begin{figure} [h!]
+  \centering 
+  \includegraphics[width=0.95\linewidth]{imgs/persp}
+ \caption{Esquerda: projeção perspectiva; Direita: projeção ortogonal} 
+ \label{fig:burstgoogle} 
+\end{figure}
+\pagebreak
+
+\textbf{Geometria Projetiva vs Geometria Euclidiana} 
+
+O material que encontrei que aborda a diferença entre ambas foram \cite{auffinger2003introduccao} \cite{birchfield1998introduction}: 
+
+Auffinger, A. C. T. C., and Fábio Júlio da Silva Valentim. "Introdução à Geometria Projetiva." UFES, Vitória (2003).
+
+e
+
+Birchfield, Stan. "An introduction to projective geometry (for computer vision)." Unpublished note, Stanford university (1998).
+
+Enquanto geometria euclidiana é sobre linhas, angulos e distâncias, geometria projetiva se foca em estudar como esses objetos são projetados no espaço. Alguns conceitos e diferenças se destacam:
+
+\begin{center}
+\begin{tabular}{ c | c c c c }
+\hline
+ Transformação & Euclidiana & Similaridade & Afim & Projetiva \\ 
+ \hline
+ Rotação & X & X & X & X \\  
+ Translação & X & X & X & X \\  
+ Escala Uniforme &  & X & X & X \\  
+ Escala Não-Uniforme &  &  & X & X \\  
+ Cisalhamento &  &  & X & X \\ 
+ Projeção Perspectiva &  &  &  & X \\ 
+ Composição de Projeções &  &  &  & X \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ c | c c c c }
+\hline
+ Invariantes & Euclidiana & Similaridade & Afim & Projetiva \\ 
+ \hline
+ Distância & X &  &  &  \\  
+ Angulo & X & X &  &  \\  
+ Proporção de Distancias & X & X &  &  \\  
+ Paralelismo & X & X & X &  \\ 
+ Incidência & X & X & X & X \\  
+ Proporção cross & X & X & X & X \\  
+\hline
+\end{tabular}
+\end{center}
+
+Como pode-se notar existem outras geometrias intermediárias e a Euclidiana é um extremo enquanto a projetiva é outro.
 
 \bibliographystyle{sbgames}
 \bibliography{template}
